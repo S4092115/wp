@@ -34,14 +34,11 @@
             flex: 0 0 auto;
         }
 
-
-
         header select {
             padding: 5px;
             flex: 0 0 auto;
             margin-right: auto;
         }
-
 
         header input[type="search"] {
             padding: 5px;
@@ -53,18 +50,24 @@
             padding-top: 50px;
             max-width: 800px;
             margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            /* This ensures content is spaced out */
         }
 
         .main-content img {
-            right: 100;
             width: 40%;
             border-radius: 50%;
+            float: right;
+            /* Moves the image to the right */
         }
 
         footer {
             background-color: #faebd7;
             padding: 10px 20px;
             text-align: center;
+            clear: both;
+            /* Ensures footer is cleared of any floating elements */
         }
     </style>
 </head>
@@ -78,8 +81,10 @@
         <input type="search" placeholder="Search">
     </header>
     <div class="main-content">
-        <h1>Pets Victoria</h1>
-        <p>Welcome to Pet Adoption</p>
+        <div>
+            <h1>Pets Victoria</h1>
+            <p>Welcome to Pet Adoption</p>
+        </div>
         <img src="images/main.jpg" alt="Puppy and Kitten">
     </div>
     <footer>
