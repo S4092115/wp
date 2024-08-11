@@ -17,7 +17,8 @@
             font-family: 'ITCGothic', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
+            background-color: #000;
+            color: white;
         }
 
         header {
@@ -26,55 +27,44 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
         }
 
-        header img {
-            height: 50px;
-            flex: 0 0 auto;
-        }
-
-        header select {
-            padding: 5px;
-            flex: 0 0 auto;
-            margin-right: auto;
-        }
-
+        header select,
         header input[type="search"] {
             padding: 5px;
-            flex: 0 1 auto;
+            flex: 1;
+            margin: 0 10px;
+            color: black;
         }
 
         .main-content {
-            text-align: center;
-            padding-top: 50px;
-            padding-bottom: 50px;
-            max-width: 800px;
-            margin: 0 auto;
             display: flex;
+            align-items: center;
             justify-content: space-between;
+            padding: 50px 10px;
+            max-width: 1600px;
+            margin: auto;
+            background: #FFA500;
         }
 
-        .main-content img {
-            width: 40%;
-            float: left;
+        .text-section {
+            width: 50%;
+            padding: 20px;
+            color: white;
         }
 
-        .main-content h1 {
-            font-size: 40px;
-            color: #e87c3c;
-        }
-
-        .main-content p {
-            font-size: 24px;
-            color: #108484;
+        .image-section {
+            width: 50%;
+            height: 100vh;
+            background: url('images/pets.jpeg') no-repeat center center;
+            background-size: cover;
         }
 
         footer {
             background-color: #e87c3c;
             padding: 20px 20px;
             text-align: center;
-            clear: both;
+            color: white;
         }
     </style>
 </head>
@@ -86,27 +76,26 @@
             <option>Select an Option...</option>
         </select>
         <input type="search" placeholder="Search">
-        <img src="images/searchico.png" alt="searchbar">
+        <img src="images/searchico.png" alt="search icon">
     </header>
     <div class="main-content">
-        <div>
+        <div class="text-section">
             <h1>Discover Pets Victoria</h1>
-        </div class="main-content">
-        <p>Pets Victoria is a dedicated pet adoption organization based in Victoria, Australia, focused on providing a
-            safe and
-            loving environment for pets in need. With a compassionate approach, Pets Victoria works tirelessly to
-            rescue,
-            rehabilitate, and rehome dogs, cats, and other animals. Their mission is to connect these deserving pets
-            with caring
-            individuals and families, creating lifelong bonds. The organization offers a range of services, including
-            adoption
-            counseling, pet education, and community support programs, all aimed at promoting responsible pet ownership
-            and reducing
-            the number of homeless animals. </p>
-        <img src="images/pets.jpeg" alt="the pets">
+            <p>Welcome to Pet Adoption</p>
+            <p>Pets Victoria is a dedicated pet adoption organization based in Victoria, Australia, focused on providing
+                a safe and loving environment for pets in need. With a compassionate approach, Pets Victoria works
+                tirelessly to rescue, rehabilitate, and rehome dogs, cats, and other animals. Their mission is to
+                connect these deserving pets with caring individuals and families, creating lifelong bonds. The
+                organization offers a range of services, including adoption counseling, pet education, and community
+                support programs, all aimed at promoting responsible pet ownership and reducing the number of homeless
+                animals.</p>
+        </div>
+        <div class="image-section">
+
+        </div>
     </div>
     <footer>
-        <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
+        <p>&copy; Copyright S123456. All Rights Reserved | Designed for Pets Victoria</p>
     </footer>
 </body>
 
