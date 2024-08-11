@@ -17,8 +17,7 @@
             font-family: 'ITCGothic', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000;
-            color: white;
+            background-color: #ffffff;
         }
 
         header {
@@ -30,29 +29,45 @@
             gap: 10px;
         }
 
-        header img {
+        header img.logo {
             height: 50px;
             flex: 0 0 auto;
         }
 
-        header select,
-        header input[type="search"] {
+        header select {
             padding: 5px;
-            flex: 1;
+            flex: 0 0 auto;
             margin-right: auto;
         }
 
-        .main-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 50px 10px;
-            max-width: 1600px;
-            margin: auto;
-            background: #ffffff;
+        header input[type="search"] {
+            padding: 5px;
+            flex: 0 1 auto;
         }
 
-        .text-section {
+        header img.search-icon {
+            height: 20px;
+            flex: 0 0 auto;
+        }
+
+        .main-content {
+            text-align: left;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main-content img {
+            width: 40%;
+            border-radius: 50%;
+            float: right;
+        }
+
+        .main-content h1,
+        .main-content p {
             text-align: center;
             width: 50%;
             padding: 20px;
@@ -60,48 +75,44 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            /* Center content vertically */
             align-items: center;
+            /* Center content horizontally */
             height: 100%;
-        }
+            /* Ensure it takes full height */
 
-        .image-section {
-            width: 50%;
-            height: 100vh;
-            background: url('images/main.jpg') no-repeat center center;
-            background-size: cover;
         }
 
         footer {
             background-color: #e87c3c;
             padding: 20px 20px;
             text-align: center;
-            color: white;
+            clear: both;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <img src="images/logo.png" alt="Pets Victoria Logo">
+        <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
         <select>
             <option>Select an Option...</option>
         </select>
         <input type="search" placeholder="Search">
-        <img src="images/searchico.png" alt="search icon">
+        <img src="images/searchico.png" alt="Search Icon" class="search-icon">
     </header>
     <div class="main-content">
-        <div class="text-section">
-            <h1>Discover Pets Victoria</h1>
-            <p>Welcome to Pet Adoption</p>
+        <div>
+            <h1>Pets Victoria</h1>
             <p>Pets Victoria is a dedicated pet adoption organization based in Victoria, Australia, focused on providing
                 a safe and loving environment for pets in need. With a compassionate approach, Pets Victoria works
                 tirelessly to rescue, rehabilitate, and rehome dogs, cats, and other animals. Their mission is to
                 connect these deserving pets with caring individuals and families, creating lifelong bonds. The
                 organization offers a range of services, including adoption counseling, pet education, and community
                 support programs, all aimed at promoting responsible pet ownership and reducing the number of homeless
-                animals.</p>
+                animals</p>
         </div>
-    </div>
+        <img src="images/main.jpg" alt="Puppy and Kitten">
     </div>
     <footer>
         <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
