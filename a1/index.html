@@ -31,20 +31,30 @@
 
         header img.logo {
             height: 50px;
-            width: auto;
+            flex: 0 0 auto;
         }
 
-        header select,
-        header input[type="search"],
-        header img.search-icon {
+        header select {
             padding: 5px;
+            flex: 0 0 auto;
+            margin-right: auto;
+        }
+
+        header input[type="search"] {
+            padding: 5px;
+            flex: 0 1 auto;
+        }
+
+        header img.search-icon {
+            height: 20px;
             flex: 0 0 auto;
         }
 
         .main-content {
             text-align: left;
-            padding: 50px 20px;
-            max-width: 1200px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            max-width: 800px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -53,12 +63,12 @@
         .main-content img {
             width: 40%;
             border-radius: 50%;
-            margin-right: 20px;
+            float: right;
         }
 
         .main-content h1,
         .main-content p {
-            font-size: calc(1.5vw + 1em);
+            font-size: 40px;
             color: #108484;
         }
 
@@ -67,19 +77,6 @@
             padding: 20px 20px;
             text-align: center;
             clear: both;
-        }
-
-        @media (max-width: 1920px) {
-
-            header img.logo,
-            header img.search-icon {
-                height: 30px;
-            }
-
-            .main-content h1,
-            .main-content p {
-                font-size: calc(1.2vw + 1em);
-            }
         }
     </style>
 </head>
@@ -91,7 +88,7 @@
             <option>Select an Option...</option>
         </select>
         <input type="search" placeholder="Search">
-        <img src="images/search-icon.png" alt="Search Icon" class="search-icon">
+        <img src="images/searchico.png" alt="Search Icon" class="search-icon">
     </header>
     <div class="main-content">
         <div>
