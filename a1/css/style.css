@@ -52,12 +52,6 @@ header img.search-icon {
     justify-content: space-between;
 }
 
-.main-content img {
-    width: 40%;
-    border-radius: 50%;
-    float: right;
-}
-
 .main-content h1,
 .main-content p {
     font-size: 40px;
