@@ -9,24 +9,40 @@
 </head>
 
 <body>
-
     <h1>Add a New Pet</h1>
-    <form action="/submit-pet" method="POST">
-        <label for="pet-name">Pet Name:</label>
+    <form action="/submit-pet" method="POST" enctype="multipart/form-data">
+        <label for="pet-name">Provide a name for the pet:</label>
         <input type="text" id="pet-name" name="petName" required>
 
-        <label for="pet-type">Type of Pet:</label>
-        <input type="text" id="pet-type" name="petType" required>
+        <label for="pet-type">Type:</label>
+        <select id="pet-type" name="petType" required>
+            <option value="" disabled selected>--Choose an option--</option>
+        </select>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
 
-        <label for="pet-age">Age:</label>
+
+        <label for="image">Select an Image: <span style="color: red;">MAX IMAGE SIZE: 500PX</span></label>
+        <input type="file" id="image" name="image" required>
+
+
+        <label for="image-caption">Image Caption:</label>
+        <input type="text" id="image-caption" name="imageCaption" required>
+
+        <label for="pet-age">Age (months):</label>
         <input type="number" id="pet-age" name="petAge" required>
+
 
         <label for="location">Location:</label>
         <input type="text" id="location" name="location" required>
 
-        <input type="submit" value="Add Pet">
+        <input type="submit" value="Submit">
+        <button type="reset">Clear</button>
     </form>
 
+    <footer>
+        <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
+    </footer>
 </body>
 
 </html>
