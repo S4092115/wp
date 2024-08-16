@@ -97,3 +97,9 @@ form {
     max-width: 600px;
     margin: 0 auto;
 }
+
+table,
+th,
+td {
+    border: 1px solid;
+}
