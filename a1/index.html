@@ -5,96 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pets Victoria</title>
-    <style>
-        @font-face {
-            font-family: 'ITCGothic';
-            src: url('fonts/ITCGOTHIC.OTF') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            font-family: 'ITCGothic', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-        }
-
-        header {
-            background-color: #108484;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-        header img.logo {
-            height: 50px;
-            flex: 0 0 auto;
-        }
-
-        header select {
-            padding: 5px;
-            flex: 0 0 auto;
-            margin-right: auto;
-        }
-
-        header input[type="search"] {
-            padding: 5px;
-            flex: 0 1 auto;
-        }
-
-        header img.search-icon {
-            height: 20px;
-            flex: 0 0 auto;
-        }
-
-        .main-content {
-            text-align: left;
-            padding-top: 50px;
-            padding-bottom: 50px;
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .main-content img {
-            width: 40%;
-            border-radius: 50%;
-            float: right;
-        }
-
-        .main-content h1,
-        .main-content p {
-            font-size: 40px;
-            color: #108484;
-        }
-
-        footer {
-            background-color: #e87c3c;
-            padding: 20px 20px;
-            text-align: center;
-            clear: both;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <header>
         <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
-        <select>
-            <select id="pageSelect">
-                <option value="" disabled selected>Select an Option...</option>
-                <option value="index.html">Home</option>
-                <option value="pets.html">Pets</option>
-                <option value="Add.html">Add A Pet</option>
-                <option value="Gallery.html">Gallery</option>
-            </select>
-            <input type="search" placeholder="Search">
-            <img src="images/searchico.png" alt="Search Icon" class="search-icon">
+        <select id="pageSelect">
+            <option value="" disabled selected>Select an Option...</option>
+            <option value="index.html">Home</option>
+            <option value="pets.html">Pets</option>
+            <option value="add.html">Add A Pet</option>
+            <option value="gallery.html">Gallery</option>
+        </select>
+        <input type="search" placeholder="Search">
+        <img src="images/searchico.png" alt="Search Icon" class="search-icon">
     </header>
+
     <div class="main-content">
         <div>
             <h1>Pets Victoria</h1>
@@ -102,9 +29,11 @@
         </div>
         <img src="images/main.jpg" alt="Puppy and Kitten">
     </div>
+
     <footer>
         <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
     </footer>
+
     <script>
         document.getElementById('pageSelect').addEventListener('change', function () {
             var url = this.value;
