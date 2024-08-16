@@ -70,3 +70,30 @@ footer {
     text-align: center;
     clear: both;
 }
+
+select {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
