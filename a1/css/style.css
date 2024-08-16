@@ -103,3 +103,14 @@ th,
 td {
     border: 1px solid;
 }
+
+.text-section {
+    width: 50%;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+}
+
+.m2 img {
+    width: 40%;
+    float: right;
+}
