@@ -2,13 +2,104 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Gallery</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/favicon.png" type="Pets Favicon">
-    <script src="js/main.js" defer></script>
-</head>
+    <title>Pets Victoria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header .logo {
+            position: absolute;
+            left: 20px;
+            top: 10px;
+        }
+
+        .header .search-bar {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+
+        .header .search-bar input {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .banner {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .banner h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .banner p {
+            color: #777;
+            margin: 10px 0;
+        }
+
+        .pets-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .pet-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+            padding: 20px;
+        }
+
+        .pet-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .pet-card h2 {
+            margin: 10px 0 0 0;
+            font-size: 18px;
+        }
+
+        .footer {
+            background-color: #FF7043;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pet Gallery</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="images/favicon.png" type="Pets Favicon">
+        <script src="js/main.js" defer></script>
+    </head>
 
 <body>
     <header>
