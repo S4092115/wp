@@ -58,11 +58,12 @@ header img.search-icon {
     color: #108484;
 }
 
-footer {
-    background-color: #e87c3c;
-    padding: 20px 20px;
+.footer {
+    background-color: #FF7043;
+    color: white;
     text-align: center;
-    clear: both;
+    padding: 10px 0;
+    margin-top: 20px;
 }
 
 select {
