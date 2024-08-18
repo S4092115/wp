@@ -108,3 +108,22 @@ td {
     width: 40%;
     float: right;
 }
+
+
+.pet-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.pet-card h2 {
+    margin: 10px 0 0 0;
+    font-size: 18px;
+}
+
+.footer {
+    background-color: #FF7043;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
