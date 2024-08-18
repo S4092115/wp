@@ -4,10 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pets Victoria</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pet Gallery</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.png" type="Pets Favicon">
-    <script src="main.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #e87c3c;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,32 +41,15 @@
         <img src="images/searchico.png" alt="Search Icon" class="search-icon">
     </header>
     <div class="main-content">
+        <div class="text-section">
+            <h1>Pet Gallery</h1>
 
-        <div class="banner">
-            <h1>Pets Victoria has a lot to offer!</h1>
-            <p>For almost two decades, Pets Victoria has helped in creating true social change by bringing pet adoption
-                into
-                the mainstream. Our work has helped make a difference to the Victorian rescue community and thousands of
-                pets in need of rescue and rehabilitation. But, until every pet is safe, respected, and loved, we all
-                still
-                have big, hairy work to do.</p>
-        </div>
-
-        <div class="pets-container">
-            <div class="pet-card">
-                <img src="milo.jpg" alt="Milo">
-                <h2>Milo</h2>
+            <div class="gallery">
+                <img src="images/cat1.jpeg" alt="Pet 1">
             </div>
-            <div class="pet-card">
-                <img src="baxter.jpg" alt="Baxter">
-                <h2>Baxter</h2>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
-        </div>
-
+            <footer>
+                <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
+            </footer>
 </body>
 
 </html>
