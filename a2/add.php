@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a New Pet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="js/main.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Ysabeau+SC:wght@1..1000&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <style>
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        label {
+            grid-column: 1 / 3;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        input[type="submit"],
+        button[type="reset"] {
+            grid-column: 1 / 2;
+            padding: 10px 15px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        button[type="reset"] {
+            grid-column: 2 / 3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
+        <select id="pageSelect">
+            <option value="" disabled selected>Select an Option...</option>
+            <option value="index.html">Home</option>
+            <option value="pets.html">Pets</option>
+            <option value="add.html">Add A Pet</option>
+            <option value="gallery.html">Gallery</option>
+        </select>
+        <input type="search" placeholder="Search">
+        <img src="images/searchico.png" alt="Search Icon" class="search-icon">
+    </header>
+
+    <h1>Add a New Pet</h1>
+    <form action="/submit-pet" method="POST" enctype="multipart/form-data">
+        <label for="pet-name">Provide a name for the pet:</label>
+        <input type="text" id="pet-name" name="petName" required>
+
+        <label for="pet-type">Type:</label>
+        <select id="pet-type" name="petType" required>
+            <option value="" disabled selected>--Choose an option--</option>
+        </select>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="image">Select an Image: <span style="color: red;">MAX IMAGE SIZE: 500PX</span></label>
+        <input type="file" id="image" name="image" required>
+
+        <label for="image-caption">Image Caption:</label>
+        <input type="text" id="image-caption" name="imageCaption" required>
+
+        <label for="pet-age">Age (months):</label>
+        <input type="number" id="pet-age" name="petAge" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+
+        <input type="submit" value="Submit">
+        <button type="reset">Clear</button>
+    </form>
+
+    <footer>
+        <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
+    </footer>
+</body>
+
+</html>
