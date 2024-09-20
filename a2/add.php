@@ -1,4 +1,50 @@
 <?php include_once "includes/header.inc"; ?>
+<?php include_once "includes/db_connect.inc"; ?>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $petName = $_POST["petName"];
+    $petType = $_POST["petType"];
+    $description = $_POST["description"];
+    $imageCaption = $_POST["imageCaption"];
+    $petAge = $_POST["petAge"];
+    $location = $_POST["location"];
+    $image = $_FILES["image"];
+    $imageName = $image["name"];
+    $imageTmpName = $image["tmp_name"];
+    $imageSize = $image["size"];
+    $imageError = $image["error"];
+    $imageType = $image["type"];
+    $imageExt = explode(".", $imageName);
+    $imageActualExt = strtolower(end($imageExt));
+    $allowed = array("jpg", "jpeg", "png");
+    if (in_array($imageActualExt, $allowed)) {
+        if ($imageError === 0) {
+            if ($imageSize < 500000) { 
+                $imageNewName = uniqid("", true) . "." . $imageActualExt;
+                $imageDestination = "images/" . $imageNewName;
+                move_uploaded_file($imageTmpName, $imageDestination);
+                $sql = "INSERT INTO pets (petName, petType, description, imageCaption, petAge, location, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $stmt = mysqli_stmt_init($conn);
+
+                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                    echo "SQL Error";
+                } else {
+                    mysqli_stmt_bind_param($stmt, "ssssiss", $petName, $petType, $description, $imageCaption, $petAge, $location, $imageNewName);
+                    mysqli_stmt_execute($stmt);
+                    header("Location: pets.php");
+                    exit();
+                }
+            } else {
+                echo "File size too big!";
+            }
+        } else {
+            echo "Error uploading file!";
+        }
+    } else {
+        echo "Invalid file type! Only JPG, JPEG, and PNG are allowed.";
+    }
+}
+?>
 
 <body>
     <header>
@@ -15,19 +61,23 @@
     </header>
 
     <h1>Add a New Pet</h1>
-    <form action="/submit-pet" method="POST" enctype="multipart/form-data">
+    <form action="add.php" method="POST" enctype="multipart/form-data">
         <label for="pet-name">Provide a name for the pet:</label>
         <input type="text" id="pet-name" name="petName" required>
 
         <label for="pet-type">Type:</label>
         <select id="pet-type" name="petType" required>
             <option value="" disabled selected>--Choose an option--</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Bird">Bird</option>
+            <option value="Other">Other</option>
         </select>
 
         <label for="description">Description:</label>
         <textarea id="description" name="description" required></textarea>
 
-        <label for="image">Select an Image: <span style="color: red;">MAX IMAGE SIZE: 500PX</span></label>
+        <label for="image">Select an Image: <span style="color: red;">MAX IMAGE SIZE: 500KB</span></label>
         <input type="file" id="image" name="image" required>
 
         <label for="image-caption">Image Caption:</label>
