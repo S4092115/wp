@@ -19,6 +19,41 @@
             border-radius: 50%;
             float: right;
         }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        label {
+            grid-column: 1 / 3;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        input[type="submit"],
+        button[type="reset"] {
+            grid-column: 1 / 2;
+            padding: 10px 15px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        button[type="reset"] {
+            grid-column: 2 / 3;
+        }
     </style>
     <script src="js/main.js" defer></script>
 </head>
