@@ -1,6 +1,7 @@
 <?php include_once "includes/header.inc"; ?>
 
 <body>
+    <div class="wrapper">
     <header>
     <a href="index.php">    
     <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">

@@ -1,14 +1,14 @@
-.wrapper {
-    width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 body {
     font-family: 'Ysabeau SC', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #fcf9ec;
+}
+
+.wrapper {
+    max-width: 1980px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 header {
@@ -42,17 +42,18 @@ header img.search-icon {
 }
 
 .main-content {
-    text-align: left;
+    text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
 .main-content h1 {
-    font-family: 'Permanent Marker';
+    font-family: 'Permanent Marker', sans-serif;
     font-size: 40px;
     color: #108484;
 }
@@ -78,6 +79,8 @@ header img.search-icon {
     justify-content: center;
     flex-wrap: wrap;
     padding: 20px;
+    gap: 30px;
+    /* Add spacing between cards */
 }
 
 .pet-card {
@@ -86,12 +89,22 @@ header img.search-icon {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 10px;
     text-align: center;
-    width: 200px;
+    width: 240px;
+    /* Increase card width */
     padding: 20px;
+    transition: transform 0.2s;
+    /* Add hover effect */
+}
+
+.pet-card:hover {
+    transform: scale(1.05);
+    /* Slight zoom on hover */
 }
 
 .pet-card img {
     width: 100%;
+    height: auto;
+    /* Keep aspect ratio */
     border-radius: 10px;
 }
 
@@ -108,27 +121,75 @@ footer {
     clear: both;
 }
 
-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    max-width: 800px;
-    margin: auto;
-}
-
-label {
-    grid-column: 1 / 3;
-    margin-top: 10px;
+select {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 input[type="text"],
 input[type="number"],
-select,
-textarea,
-input[type="file"] {
+textarea {
     width: 100%;
+    max-width: 300px;
     padding: 8px;
-    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pet-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px;
+}
+
+.pet-details img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.pet-info-icons {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 40px;
+    margin: 20px auto;
+    font-size: 24px;
+    color: #108484;
+}
+
+.pet-info-icons div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pet-info-icons span {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.pet-description {
+    max-width: 800px;
+    text-align: center;
+    margin: 20px auto;
 }
 
 input[type="submit"],
@@ -141,42 +202,4 @@ button[type="reset"] {
 
 button[type="reset"] {
     grid-column: 2 / 3;
-}
-
-table {
-    margin-top: 20px;
-    border-collapse: collapse;
-    width: 50%;
-}
-
-th,
-td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f2f2f2;
-    font-family: 'Poetsen One', Arial, sans-serif;
-}
-
-td {
-    font-family: 'Ysabeau SC', Arial, sans-serif;
-}
-
-.text-section {
-    width: 50%;
-    padding: 20px;
-    color: rgb(0, 0, 0);
-}
-
-.m2 img {
-    width: 40%;
-    float: right;
-}
-
-.main-content img {
-    width: 40%;
-    float: right;
 }
