@@ -1,6 +1,7 @@
 <?php include_once "includes/header.inc"; ?>
 
 <body>
+    <div class="wrapper">
     <header>
         <a href="index.php">
             <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
@@ -16,10 +17,16 @@
         <img src="images/searchico.png" alt="Search Icon" class="search-icon">
     </header>
 
+    <div class="main-content">
+        <div>
+            <h1>Pets Victoria</h1>
+            <p>Welcome to Pet Adoption</p>
+        </div>
+        <img src="images/main.jpg" alt="Puppy and Kitten">
+    </div>
 
-    <footer>
-        <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
-    </footer>
+    <?php include_once "includes/footer.inc"; ?>
+    </div>
 </body>
 
 </html>
