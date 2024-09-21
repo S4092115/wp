@@ -95,9 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="reset">Clear</button>
     </form>
 
-    <footer>
-        <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
-    </footer>
+    <?php include_once "includes/footer.inc"; ?>
 </body>
 
 </html>
