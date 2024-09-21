@@ -7,7 +7,7 @@ if (strstr($_SERVER['SERVER_NAME'], 'localhost')) {
 } else {
     $servername = "talsprddb02.int.its.rmit.edu.au";
     $username = "s4092115";
-    $password = "Sayurimygoat69";
+    $password = "SayuriString69";
     $dbname = "petsvictoria";
 }
 $conn = new mysqli($servername, $username, $password, $dbname);
