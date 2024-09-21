@@ -5,9 +5,7 @@
         <a href="index.php">
         <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
         </a>
-        <select id="pageSelect">
             <?php include_once "includes/nav.inc"; ?>
-        </select>
         <input type="search" placeholder="Search">
         <img src="images/searchico.png" alt="Search Icon" class="search-icon">
     </header>
