@@ -1,5 +1,6 @@
 <?php include_once "includes/header.inc"; ?>
 <?php include_once "includes/db_connect.inc"; ?>
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $petName = $_POST["petName"];
@@ -17,25 +18,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageExt = explode(".", $imageName);
     $imageActualExt = strtolower(end($imageExt));
     $allowed = array("jpg", "jpeg", "png");
+
     if (in_array($imageActualExt, $allowed)) {
         if ($imageError === 0) {
             if ($imageSize < 500000) { 
                 $imageNewName = uniqid("", true) . "." . $imageActualExt;
                 $imageDestination = "images/" . $imageNewName;
                 move_uploaded_file($imageTmpName, $imageDestination);
-                $sql = "INSERT INTO pets (petName, petType, description, imageCaption, petAge, location, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+                $sql = "INSERT INTO pets (petname, type, description, caption, age, location, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
 
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    echo "SQL Error";
+                    echo "SQL Error: " . mysqli_error($conn);
                 } else {
                     mysqli_stmt_bind_param($stmt, "ssssiss", $petName, $petType, $description, $imageCaption, $petAge, $location, $imageNewName);
-                    mysqli_stmt_execute($stmt);
-                    header("Location: pets.php");
-                    exit();
+                    if (mysqli_stmt_execute($stmt)) {
+                        header("Location: pets.php?success");
+                        exit();
+                    } else {
+                        echo "Error executing SQL: " . mysqli_error($conn);
+                    }
                 }
             } else {
-                echo "File size too big!";
+                echo "File size too big! Maximum allowed size is 500KB.";
             }
         } else {
             echo "Error uploading file!";
@@ -49,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <a href="index.php">
-        <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
+            <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
         </a>
         <select id="pageSelect">
             <option value="" disabled selected>Select an Option...</option>
