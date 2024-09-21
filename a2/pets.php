@@ -1,8 +1,11 @@
 <?php include_once "includes/header.inc"; ?>
+<?php include_once "includes/nav.inc"; ?>
 
 <body>
     <header>
+        <a href="index.php">
         <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
+        </a>
         <select id="pageSelect">
             <option value="" disabled selected>Select an Option...</option>
             <option value="index.php">Home</option>
@@ -72,9 +75,7 @@
             </table>
         </div>
     </div>
-    <footer>
-        <p>&copy; Copyright S4092115. All Rights Reserved | Designed for Pets Victoria</p>
-    </footer>
+    <?php include_once "includes/footer.inc"; ?>
 </body>
 
 </html>
