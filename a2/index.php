@@ -2,7 +2,9 @@
 
 <body>
     <header>
-        <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
+        <a href="index.php">
+            <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
+        </a>
         <select id="pageSelect">
             <option value="" disabled selected>Select an Option...</option>
             <option value="index.php">Home</option>
