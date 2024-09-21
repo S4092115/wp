@@ -80,7 +80,6 @@ header img.search-icon {
     flex-wrap: wrap;
     padding: 20px;
     gap: 30px;
-    /* Add spacing between cards */
 }
 
 .pet-card {
@@ -90,21 +89,17 @@ header img.search-icon {
     margin: 10px;
     text-align: center;
     width: 240px;
-    /* Increase card width */
     padding: 20px;
     transition: transform 0.2s;
-    /* Add hover effect */
 }
 
 .pet-card:hover {
     transform: scale(1.05);
-    /* Slight zoom on hover */
 }
 
 .pet-card img {
     width: 100%;
     height: auto;
-    /* Keep aspect ratio */
     border-radius: 10px;
 }
 
@@ -114,38 +109,38 @@ header img.search-icon {
     font-size: 18px;
 }
 
-footer {
-    background-color: #e87c3c;
-    padding: 20px 20px;
-    text-align: center;
-    clear: both;
-}
-
-select {
+.pets-table {
     width: 100%;
-    max-width: 300px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type="text"],
-input[type="number"],
-textarea {
-    width: 100%;
-    max-width: 300px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-form {
     max-width: 600px;
     margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 16px;
+    border: 2px solid #108484;
+    /* Adds border to the entire table */
+}
+
+.pets-table th,
+.pets-table td {
+    padding: 10px;
+    text-align: left;
+    border: 2px solid #108484;
+    /* Adds border to each cell */
+}
+
+.pets-table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-family: 'Poetsen One', Arial, sans-serif;
+}
+
+.pets-table td a {
+    color: #108484;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pets-table td a:hover {
+    text-decoration: underline;
 }
 
 .pet-details {
@@ -192,6 +187,24 @@ form {
     margin: 20px auto;
 }
 
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
 input[type="submit"],
 button[type="reset"] {
     grid-column: 1 / 2;
@@ -202,4 +215,35 @@ button[type="reset"] {
 
 button[type="reset"] {
     grid-column: 2 / 3;
+}
+
+footer {
+    background-color: #e87c3c;
+    padding: 20px 20px;
+    text-align: center;
+    clear: both;
+}
+
+select {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+footer p {
+    margin: 0;
 }
