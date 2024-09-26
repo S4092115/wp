@@ -4,12 +4,12 @@
 <?php
 // Get the pet ID from the query string
 if (isset($_GET['id'])) {
-    $petid = intval($_GET['id']); // Ensure petid is an integer
+    $petid = intval($_GET['id']);
 
     // Prepare a SQL query to fetch the pet's details
     $sql = "SELECT petname, type, age, location, image, caption, description FROM pets WHERE petid = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $petid); // Bind the petid to the query
+    $stmt->bind_param("i", $petid);
 
     if ($stmt->execute()) {
         $result = $stmt->get_result();
