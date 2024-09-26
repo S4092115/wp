@@ -53,26 +53,22 @@ if (isset($_GET['id'])) {
         <div class="main-content">
             <h1><?php echo $row['petname']; ?></h1>
             <div class="pet-details">
-                <!-- Pet image -->
                 <img src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['petname']; ?>" class="pet-image">
 
-                <!-- Pet information: Age, Type, Location -->
                 <div class="pet-info-icons">
                     <div>
                         <i class="material-icons">Age</i>
                         <span><?php echo ($row['age'] < 12) ? $row['age'] . " months" : round($row['age'] / 12, 1) . " years"; ?></span>
                     </div>
                     <div>
-                        <i class="material-icons">pets</i>
+                        <i class="material-icons">Pet type</i>
                         <span><?php echo $row['type']; ?></span>
                     </div>
                     <div>
-                        <i class="material-icons">place</i>
+                        <i class="material-icons">Place</i>
                         <span><?php echo $row['location']; ?></span>
                     </div>
                 </div>
-
-                <!-- Pet description and caption -->
                 <div class="pet-description">
                     <h2><?php echo $row['caption']; ?></h2>
                     <p><?php echo $row['description']; ?></p>
