@@ -59,7 +59,7 @@ if (isset($_GET['id'])) {
                 <!-- Pet information: Age, Type, Location -->
                 <div class="pet-info-icons">
                     <div>
-                        <i class="material-icons">schedule</i>
+                        <i class="material-icons">Age</i>
                         <span><?php echo ($row['age'] < 12) ? $row['age'] . " months" : round($row['age'] / 12, 1) . " years"; ?></span>
                     </div>
                     <div>
