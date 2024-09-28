@@ -29,16 +29,17 @@
 
             <div class="pets-container">
                 <?php
-                //Finish this tommrrow or later
                 $sql = "SELECT petid, petname, image FROM pets";
                 $result = $conn->query($sql);
 
-                // check the results 
                 if ($result && $result->num_rows > 0) {
-                    // display the pet
                     while ($row = $result->fetch_assoc()) {
                         echo '<div class="pet-card">';
-  
+                        echo '<a href="details.php?id=' . $row['petid'] . '">';
+                        echo '<img src="images/' . $row['image'] . '" alt="' . $row['petname'] . '">';
+                        echo '<h2>' . $row['petname'] . '</h2>';
+                        echo '</a>';
+                        echo '</div>';
                     }
                 } else {
                     echo "<p>No pets available in the gallery at the moment.</p>";
