@@ -1,0 +1,249 @@
+body {
+    font-family: 'Ysabeau SC', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fcf9ec;
+}
+
+.wrapper {
+    max-width: 1980px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #108484;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+header img.logo {
+    height: 50px;
+    flex: 0 0 auto;
+}
+
+header select {
+    padding: 5px;
+    flex: 0 0 auto;
+    margin-right: auto;
+}
+
+header input[type="search"] {
+    padding: 5px;
+    flex: 0 1 auto;
+}
+
+header img.search-icon {
+    height: 20px;
+    flex: 0 0 auto;
+}
+
+.main-content {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-content h1 {
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 40px;
+    color: #108484;
+}
+
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+    font-family: 'Poetsen One', Arial, sans-serif;
+    font-size: 40px;
+    color: #108484;
+}
+
+.main-content p {
+    font-family: 'Ysabeau SC', Arial, sans-serif;
+    font-size: 18px;
+    color: #108484;
+}
+
+.pets-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 30px;
+}
+
+.pet-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    text-align: center;
+    width: 240px;
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.pet-card:hover {
+    transform: scale(1.05);
+}
+
+.pet-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.pet-card h2 {
+    font-family: 'Poetsen One', Arial, sans-serif;
+    margin: 10px 0 0 0;
+    font-size: 18px;
+}
+
+.pets-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 16px;
+    border: 2px solid #108484;
+    /* Adds border to the entire table */
+}
+
+.pets-table th,
+.pets-table td {
+    padding: 10px;
+    text-align: left;
+    border: 2px solid #108484;
+    /* Adds border to each cell */
+}
+
+.pets-table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-family: 'Poetsen One', Arial, sans-serif;
+}
+
+.pets-table td a {
+    color: #108484;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pets-table td a:hover {
+    text-decoration: underline;
+}
+
+.pet-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px;
+}
+
+.pet-details img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.pet-info-icons {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 40px;
+    margin: 20px auto;
+    font-size: 24px;
+    color: #108484;
+}
+
+.pet-info-icons div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pet-info-icons span {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.pet-description {
+    max-width: 800px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+input[type="submit"],
+button[type="reset"] {
+    grid-column: 1 / 2;
+    padding: 10px 15px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button[type="reset"] {
+    grid-column: 2 / 3;
+}
+
+footer {
+    background-color: #e87c3c;
+    padding: 20px 20px;
+    text-align: center;
+    clear: both;
+}
+
+select {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+footer p {
+    margin: 0;
+}
