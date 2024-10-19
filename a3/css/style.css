@@ -5,12 +5,14 @@ body {
     background-color: #fcf9ec;
 }
 
+/* Wrapper now has a fixed width of 1200px and is centered */
 .wrapper {
-    max-width: 1980px;
+    width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
+/* Header Styling */
 header {
     background-color: #108484;
     padding: 10px 20px;
@@ -25,12 +27,44 @@ header img.logo {
     flex: 0 0 auto;
 }
 
-header select {
-    padding: 5px;
-    flex: 0 0 auto;
-    margin-right: auto;
+/* Nav Dropdown Styling */
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    /* Adds space between nav items */
+    align-items: center;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #108484;
+}
+
+nav ul li a:hover {
+    background-color: #ddd;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+/* Search bar and search icon styling */
 header input[type="search"] {
     padding: 5px;
     flex: 0 1 auto;
@@ -41,12 +75,11 @@ header img.search-icon {
     flex: 0 0 auto;
 }
 
+/* Main Content Styling */
 .main-content {
     text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -58,22 +91,13 @@ header img.search-icon {
     color: #108484;
 }
 
-.main-content h2,
-.main-content h3,
-.main-content h4,
-.main-content h5,
-.main-content h6 {
-    font-family: 'Poetsen One', Arial, sans-serif;
-    font-size: 40px;
-    color: #108484;
-}
-
 .main-content p {
     font-family: 'Ysabeau SC', Arial, sans-serif;
     font-size: 18px;
     color: #108484;
 }
 
+/* Pet Cards */
 .pets-container {
     display: flex;
     justify-content: center;
@@ -109,6 +133,7 @@ header img.search-icon {
     font-size: 18px;
 }
 
+/* Pet Tables */
 .pets-table {
     width: 100%;
     max-width: 600px;
@@ -116,7 +141,6 @@ header img.search-icon {
     border-collapse: collapse;
     font-size: 16px;
     border: 2px solid #108484;
-    /* Adds border to the entire table */
 }
 
 .pets-table th,
@@ -124,7 +148,6 @@ header img.search-icon {
     padding: 10px;
     text-align: left;
     border: 2px solid #108484;
-    /* Adds border to each cell */
 }
 
 .pets-table th {
@@ -143,6 +166,7 @@ header img.search-icon {
     text-decoration: underline;
 }
 
+/* Pet Details */
 .pet-details {
     display: flex;
     justify-content: center;
@@ -187,6 +211,7 @@ header img.search-icon {
     margin: 20px auto;
 }
 
+/* Forms */
 form {
     max-width: 600px;
     margin: 0 auto;
@@ -207,41 +232,21 @@ input[type="file"] {
 
 input[type="submit"],
 button[type="reset"] {
-    grid-column: 1 / 2;
     padding: 10px 15px;
     margin-top: 20px;
     cursor: pointer;
 }
 
-button[type="reset"] {
-    grid-column: 2 / 3;
-}
-
+/* Footer */
 footer {
     background-color: #e87c3c;
-    padding: 20px 20px;
+    width: 1200px;
+    /* Fixed width for the footer */
+    margin: 0 auto;
+    /* Center the footer */
+    padding: 20px;
     text-align: center;
     clear: both;
-}
-
-select {
-    width: 100%;
-    max-width: 300px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-textarea {
-    width: 100%;
-    max-width: 300px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
 }
 
 footer p {

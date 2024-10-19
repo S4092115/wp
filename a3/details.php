@@ -1,13 +1,14 @@
-<?php include_once "includes/header.inc"; ?>
-<?php include_once "includes/db_connect.inc"; ?>
-
 <?php
+session_start(); // Start session to access the logged-in user details
+include_once "includes/header.inc";
+include_once "includes/db_connect.inc";
+
 // Get the pet ID from the query string
 if (isset($_GET['id'])) {
     $petid = intval($_GET['id']);
 
     // Prepare a SQL query to fetch the pet's details
-    $sql = "SELECT petname, type, age, location, image, caption, description FROM pets WHERE petid = ?";
+    $sql = "SELECT petname, type, age, location, image, caption, description, username FROM pets WHERE petid = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $petid);
 
@@ -35,19 +36,11 @@ if (isset($_GET['id'])) {
 
 <body>
     <div class="wrapper">
-        <header>
+       <header>
             <a href="index.php">
                 <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
             </a>
-            <select id="pageSelect">
-                <option value="" disabled selected>Select an Option...</option>
-                <option value="index.php">Home</option>
-                <option value="pets.php">Pets</option>
-                <option value="add.php">Add A Pet</option>
-                <option value="gallery.php">Gallery</option>
-            </select>
-            <input type="search" placeholder="Search">
-            <img src="images/searchico.png" alt="Search Icon" class="search-icon">
+            <?php include_once "includes/nav.inc"; ?>
         </header>
 
         <div class="main-content">
@@ -74,10 +67,17 @@ if (isset($_GET['id'])) {
                     <p><?php echo $row['description']; ?></p>
                 </div>
             </div>
+
+            <!-- Show Edit/Delete buttons if the logged-in user is the owner of the pet -->
+            <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $row['username']) : ?>
+                <div class="edit-delete-buttons">
+                    <a href="edit.php?petid=<?php echo $petid; ?>" class="btn btn-primary">Edit</a>
+                    <a href="delete.php?petid=<?php echo $petid; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this pet?');">Delete</a>
+                </div>
+            <?php endif; ?>
         </div>
 
         <?php include_once "includes/footer.inc"; ?>
     </div>
 </body>
 </html>
-

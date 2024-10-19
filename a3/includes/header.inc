@@ -1,3 +1,10 @@
+<?php
+// Start the session if not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,3 +64,4 @@
     </style>
     <script src="js/main.js" defer></script>
 </head>
+
