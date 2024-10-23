@@ -1,0 +1,69 @@
+<?php 
+include_once "includes/header.inc"; 
+include_once "includes/db_connect.inc"; 
+
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Check if the pet ID is provided
+if (isset($_GET['petid'])) {
+    $petid = intval($_GET['petid']);
+    
+    // Fetch the pet details including the image
+    $sql = "SELECT image FROM pets WHERE petid = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $petid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $pet = $result->fetch_assoc();
+
+    if (!$pet) {
+        echo "Pet not found.";
+        exit();
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Prepare to delete the pet record
+        $sql = "DELETE FROM pets WHERE petid = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $petid);
+        
+        if ($stmt->execute()) {
+            // Deletes the associated image
+            $imagePath = "images/" . $pet['image'];
+            if (file_exists($imagePath) && $imagePath != "images/default.jpg") {
+                unlink($imagePath); // Delete the image
+            }
+            // Redirect to the gallery page after successful deletion
+            header("Location: gallery.php");
+            exit();
+        } else {
+            echo "Error: " . $conn->error;
+        }
+    }
+}
+?>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <?php include_once "includes/nav.inc"; ?>
+        </header>
+        <h2>Delete Pet</h2>
+        <p>Are you sure you want to delete this pet?</p>
+        <form method="POST" onsubmit="return confirmDeletion();">
+            <button type="submit">Yes, Delete</button>
+            <a href="details.php?petid=<?php echo $petid; ?>">Cancel</a>
+        </form>
+    </div>
+    <?php include_once "includes/footer.inc"; ?>
+
+    <script>
+        function confirmDeletion() {
+            return confirm('Are you sure you want to delete this pet? This action cannot be undone.');
+        }
+    </script>
+</body>
+</html>

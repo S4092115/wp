@@ -1,7 +1,14 @@
-<?php include_once "includes/header.inc"; ?>
-<?php include_once "includes/db_connect.inc"; ?>
-
 <?php
+session_start();
+include_once "includes/header.inc";
+include_once "includes/db_connect.inc";
+
+// Ensure the user is logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $petName = $_POST["petName"];
     $petType = $_POST["petType"];
@@ -10,6 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $petAge = $_POST["petAge"];
     $location = $_POST["location"];
     $image = $_FILES["image"];
+    $username = $_SESSION['username']; // Get the logged-in user's username
+
     $imageName = $image["name"];
     $imageTmpName = $image["tmp_name"];
     $imageSize = $image["size"];
@@ -26,13 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $imageDestination = "images/" . $imageNewName;
                 move_uploaded_file($imageTmpName, $imageDestination);
 
-                $sql = "INSERT INTO pets (petname, type, description, caption, age, location, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                // Inserts the pet details along with the username
+                $sql = "INSERT INTO pets (petname, type, description, caption, age, location, image, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
 
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
                     echo "SQL Error: " . mysqli_error($conn);
                 } else {
-                    mysqli_stmt_bind_param($stmt, "ssssiss", $petName, $petType, $description, $imageCaption, $petAge, $location, $imageNewName);
+                    mysqli_stmt_bind_param($stmt, "ssssisss", $petName, $petType, $description, $imageCaption, $petAge, $location, $imageNewName, $username);
                     if (mysqli_stmt_execute($stmt)) {
                         header("Location: pets.php?success");
                         exit();
@@ -97,6 +107,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php include_once "includes/footer.inc"; ?>
     </div>
 </body>
-
-
 </html>

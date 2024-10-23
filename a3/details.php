@@ -32,11 +32,13 @@ if (isset($_GET['id'])) {
     echo "<p>No pet selected. Please go back and select a pet.</p>";
     exit();
 }
+
 ?>
 
+<!-- The rest of your body code -->
 <body>
     <div class="wrapper">
-       <header>
+        <header>
             <a href="index.php">
                 <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
             </a>
@@ -74,10 +76,11 @@ if (isset($_GET['id'])) {
                     <a href="edit.php?petid=<?php echo $petid; ?>" class="btn btn-primary">Edit</a>
                     <a href="delete.php?petid=<?php echo $petid; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this pet?');">Delete</a>
                 </div>
+            <?php else: ?>
+                <p>You do not have permission to edit or delete this pet.</p>
             <?php endif; ?>
         </div>
 
         <?php include_once "includes/footer.inc"; ?>
     </div>
 </body>
-</html>
