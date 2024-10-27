@@ -5,19 +5,18 @@
         <li><a href="gallery.php">Gallery</a></li>
         <li><a href="search.php">Search</a></li>
         
-        <!-- Only show 'Add Pet' if the user is logged in -->
+        <!-- Only show 'Add Pet' and 'Profile' if the user is logged in -->
         <?php if (isset($_SESSION['username'])): ?>
             <li><a href="add.php">Add Pet</a></li>
-            <li><a href="user.php">Profile</a></li>
-
+            <!-- Ensure the userID is passed to the profile link -->
+            <li><a href="user.php?userID=<?php echo $_SESSION['userID']; ?>">Profile</a></li>
         <?php endif; ?>
 
-        <!-- Show Register and Login options if the user is not logged in -->
+        <!-- Show Register and Login if the user is not logged in -->
         <?php if (!isset($_SESSION['username'])): ?>
             <li><a href="register.php">Register</a></li>
             <li><a href="login.php">Login</a></li>
         <?php else: ?>
-            <!-- If the user is logged in, show 'Logout' instead -->
             <li><a href="logout.php">Logout</a></li>
         <?php endif; ?>
     </ul>

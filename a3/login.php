@@ -9,20 +9,26 @@ if (session_status() === PHP_SESSION_NONE) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
-    $password = sha1($_POST['password']);  //hashes the password
+    $password = sha1($_POST['password']);  // Hash the password
     
     // Prepare and execute query
-    $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+    $sql = "SELECT userID, username FROM users WHERE username = ? AND password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
     $result = $stmt->get_result();
     
     if ($result->num_rows > 0) {
+        // Fetch the user data
+        $user = $result->fetch_assoc();
+        
         // If login is successful, create a session
-        $_SESSION['username'] = $username;
-        header("Location: index.php");
-        exit(); // Make sure the script stops after redirection
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['userID'] = $user['userID']; // Store userID in the session
+        
+        // Redirect to the user's profile page
+        header("Location: user.php?userID=" . $user['userID']);
+        exit(); // Ensure the script stops after redirection
     } else {
         echo "<p style='color: red;'>Invalid login details. Please try again.</p>";
     }

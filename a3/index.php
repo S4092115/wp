@@ -50,10 +50,74 @@
 
             <!-- Search Bar -->
             <div class="search-box" style="margin-top: 20px;">
-                <input class="form-control me-2" type="search" placeholder="I am looking for..." aria-label="Search" style="display: inline-block; width: 250px; margin-right: 10px;">
-                <input class="form-control me-2" type="text" placeholder="Select your pet type" aria-label="Pet type" style="display: inline-block; width: 250px;">
-                <button class="btn btn-outline-success" type="submit" style="margin-left: 10px;">Search</button>
+                <form action="index.php" method="GET">
+                    <input class="form-control me-2" type="search" name="keyword" placeholder="I am looking for..." aria-label="Search" style="display: inline-block; width: 250px; margin-right: 10px;">
+                    <select class="form-control me-2" name="type" aria-label="Pet type" style="display: inline-block; width: 250px;">
+                        <option value="">Select pet type</option>
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                        <option value="Bird">Bird</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <button class="btn btn-outline-success" type="submit" style="margin-left: 10px;">Search</button>
+                </form>
             </div>
+
+            <!-- Search Results Section -->
+            <?php
+            if ($_SERVER['REQUEST_METHOD'] === 'GET' && (isset($_GET['keyword']) || isset($_GET['type']))) {
+                $searchKeyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
+                $searchType = isset($_GET['type']) ? trim($_GET['type']) : '';
+
+                // Prepare SQL query based on user input
+                $sql = "SELECT petid, petname, image, description, type FROM pets WHERE 1=1";
+
+                // Add conditions based on search inputs
+                if (!empty($searchKeyword)) {
+                    $sql .= " AND (petname LIKE ? OR description LIKE ?)";
+                }
+                if (!empty($searchType)) {
+                    $sql .= " AND type = ?";
+                }
+
+                // Prepare and execute the query
+                $stmt = $conn->prepare($sql);
+
+                // Bind parameters dynamically based on search inputs
+                if (!empty($searchKeyword) && !empty($searchType)) {
+                    $keyword = '%' . $searchKeyword . '%';
+                    $stmt->bind_param('sss', $keyword, $keyword, $searchType);
+                } elseif (!empty($searchKeyword)) {
+                    $keyword = '%' . $searchKeyword . '%';
+                    $stmt->bind_param('ss', $keyword, $keyword);
+                } elseif (!empty($searchType)) {
+                    $stmt->bind_param('s', $searchType);
+                }
+
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                // Display search results
+                if ($result->num_rows > 0) {
+                    echo '<div class="pets-container" style="margin-top: 40px;">';
+                    while ($row = $result->fetch_assoc()) {
+                        // Link to the details page for each pet
+                        echo '<a href="details.php?petid=' . htmlspecialchars($row['petid']) . '" class="pet-link">';
+                        echo '<div class="pet-card">';
+                        echo '<img src="images/' . htmlspecialchars($row['image']) . '" alt="' . htmlspecialchars($row['petname']) . '">';
+                        echo '<h2>' . htmlspecialchars($row['petname']) . '</h2>';
+                        echo '<p>' . htmlspecialchars($row['description']) . '</p>';
+                        echo '</div>';
+                        echo '</a>';
+                    }
+                    echo '</div>';
+                } else {
+                    echo "<p>No pets found for your search criteria.</p>";
+                }
+
+                $stmt->close();
+            }
+            ?>
 
             <div class="text-section" style="margin-top: 40px;">
                 <h1>Discover Pets Victoria</h1>
@@ -68,5 +132,6 @@
     </div>
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/carousel.js"></script>
 </body>
 </html>

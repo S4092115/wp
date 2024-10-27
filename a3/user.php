@@ -1,7 +1,12 @@
 <?php
 // Include the header and the database connection
 include_once "includes/header.inc";
-include_once "includes/db_connect.inc"; 
+include_once "includes/db_connect.inc";
+
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Check if userID is present in the query string
 if (isset($_GET['userID'])) {
@@ -21,9 +26,9 @@ if (isset($_GET['userID'])) {
     }
 
     // Fetch all pets uploaded by this user
-    $sql = "SELECT petid, petname, image, description FROM pets WHERE userID = ?";
+    $sql = "SELECT petid, petname, image, description FROM pets WHERE username = ?";
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("i", $userID);
+        $stmt->bind_param("s", $username); // Use the username
         $stmt->execute();
         $result = $stmt->get_result();
     } else {
@@ -56,8 +61,19 @@ if (isset($_GET['userID'])) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="pet-card">';
                     echo '<img src="images/' . htmlspecialchars($row['image']) . '" alt="' . htmlspecialchars($row['petname']) . '">';
-                    echo '<h2>' . htmlspecialchars($row['petname']) . '</h2>';
+                    
+                    // Link to the pet details page
+                    echo '<h2><a href="details.php?petid=' . htmlspecialchars($row['petid']) . '">' . htmlspecialchars($row['petname']) . '</a></h2>';
                     echo '<p>' . htmlspecialchars($row['description']) . '</p>';
+                    
+                    // If the logged-in user is the owner, show edit/delete options
+                    if (isset($_SESSION['username']) && $_SESSION['username'] == $username) {
+                        echo '<div class="pet-actions">';
+                        echo '<a href="edit.php?petid=' . htmlspecialchars($row['petid']) . '" class="btn btn-primary">Edit</a>';
+                        echo '<a href="delete.php?petid=' . htmlspecialchars($row['petid']) . '" class="btn btn-danger" onclick="return confirm(\'Are you sure you want to delete this pet?\');">Delete</a>';
+                        echo '</div>';
+                    }
+                    
                     echo '</div>';
                 }
                 echo '</div>';

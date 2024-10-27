@@ -4,8 +4,8 @@ include_once "includes/header.inc";
 include_once "includes/db_connect.inc";
 
 // Get the pet ID from the query string
-if (isset($_GET['id'])) {
-    $petid = intval($_GET['id']);
+if (isset($_GET['petid'])) {  // Changed 'id' to 'petid' for consistency
+    $petid = intval($_GET['petid']);  // Make sure 'petid' is an integer
 
     // Prepare a SQL query to fetch the pet's details
     $sql = "SELECT petname, type, age, location, image, caption, description, username FROM pets WHERE petid = ?";
@@ -35,7 +35,6 @@ if (isset($_GET['id'])) {
 
 ?>
 
-<!-- The rest of your body code -->
 <body>
     <div class="wrapper">
         <header>
@@ -46,27 +45,27 @@ if (isset($_GET['id'])) {
         </header>
 
         <div class="main-content">
-            <h1><?php echo $row['petname']; ?></h1>
+            <h1><?php echo htmlspecialchars($row['petname']); ?></h1>
             <div class="pet-details">
-                <img src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['petname']; ?>" class="pet-image">
+                <img src="images/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['petname']); ?>" class="pet-image">
 
                 <div class="pet-info-icons">
                     <div>
                         <i class="material-icons">Age</i>
-                        <span><?php echo ($row['age'] < 12) ? $row['age'] . " months" : round($row['age'] / 12, 1) . " years"; ?></span>
+                        <span><?php echo ($row['age'] < 12) ? htmlspecialchars($row['age']) . " months" : round(htmlspecialchars($row['age']) / 12, 1) . " years"; ?></span>
                     </div>
                     <div>
                         <i class="material-icons">Pet type</i>
-                        <span><?php echo $row['type']; ?></span>
+                        <span><?php echo htmlspecialchars($row['type']); ?></span>
                     </div>
                     <div>
-                        <i class="material-icons">Place</i>
-                        <span><?php echo $row['location']; ?></span>
+                        <i class="material-icons">Location</i>
+                        <span><?php echo htmlspecialchars($row['location']); ?></span>
                     </div>
                 </div>
                 <div class="pet-description">
-                    <h2><?php echo $row['caption']; ?></h2>
-                    <p><?php echo $row['description']; ?></p>
+                    <h2><?php echo htmlspecialchars($row['caption']); ?></h2>
+                    <p><?php echo htmlspecialchars($row['description']); ?></p>
                 </div>
             </div>
 
