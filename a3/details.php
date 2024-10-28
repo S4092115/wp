@@ -69,14 +69,16 @@ if (isset($_GET['petid'])) {  // Changed 'id' to 'petid' for consistency
                 </div>
             </div>
 
-            <!-- Show Edit/Delete buttons if the logged-in user is the owner of the pet -->
-            <?php if (isset($_SESSION['username']) && $_SESSION['username'] == $row['username']) : ?>
-                <div class="edit-delete-buttons">
-                    <a href="edit.php?petid=<?php echo $petid; ?>" class="btn btn-primary">Edit</a>
-                    <a href="delete.php?petid=<?php echo $petid; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this pet?');">Delete</a>
-                </div>
-            <?php else: ?>
-                <p>You do not have permission to edit or delete this pet.</p>
+            <!-- Show Edit/Delete buttons only if the user is logged in and is the owner of the pet -->
+            <?php if (isset($_SESSION['username'])) : ?>
+                <?php if ($_SESSION['username'] == $row['username']) : ?>
+                    <div class="edit-delete-buttons">
+                        <a href="edit.php?petid=<?php echo $petid; ?>" class="btn btn-primary">Edit</a>
+                        <a href="delete.php?petid=<?php echo $petid; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this pet?');">Delete</a>
+                    </div>
+                <?php else: ?>
+                    <p>You do not have permission to edit or delete this pet.</p>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
 
