@@ -27,9 +27,10 @@
                 if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo '<div class="pet-card">';
-                        echo '<a href="details.php?id=' . $row['petid'] . '">';
-                        echo '<img src="images/' . $row['image'] . '" alt="' . $row['petname'] . '">';
-                        echo '<h2>' . $row['petname'] . '</h2>';
+                        // Ensure you're passing `petid` as the parameter in the URL, as `details.php` expects `petid`
+                        echo '<a href="details.php?petid=' . $row['petid'] . '">';
+                        echo '<img src="images/' . htmlspecialchars($row['image']) . '" alt="' . htmlspecialchars($row['petname']) . '">';
+                        echo '<h2>' . htmlspecialchars($row['petname']) . '</h2>';
                         echo '</a>';
                         echo '</div>';
                     }

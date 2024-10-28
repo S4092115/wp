@@ -34,7 +34,7 @@
                 $petType = isset($_GET['pettype']) ? $_GET['pettype'] : '';
 
                 // Build the SQL query based on the search inputs
-                $sql = "SELECT petname, type, description, image FROM pets WHERE (1=1)";
+                $sql = "SELECT petid, petname, type, description, image FROM pets WHERE (1=1)";
                 
                 // Append conditions based on input
                 if (!empty($keyword)) {
@@ -65,9 +65,12 @@
                     echo '<div class="pets-container">';
                     while ($row = $result->fetch_assoc()) {
                         echo '<div class="pet-card">';
+                        // Hyperlink to details.php using the petid
+                        echo '<a href="details.php?petid=' . htmlspecialchars($row['petid']) . '">';
                         echo '<img src="images/' . htmlspecialchars($row['image']) . '" alt="' . htmlspecialchars($row['petname']) . '" class="pet-image">';
                         echo '<h2>' . htmlspecialchars($row['petname']) . '</h2>';
                         echo '<p>' . htmlspecialchars($row['description']) . '</p>';
+                        echo '</a>';
                         echo '</div>';
                     }
                     echo '</div>';
