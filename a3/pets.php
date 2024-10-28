@@ -45,7 +45,7 @@
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
                                 // Hyperlink petname to details.php using the petid in the query string
-                                echo "<td><a href='details.php?id=" . $row['petid'] . "'>" . $row['petname'] . "</a></td>";
+                                echo "<td><a href='details.php?petid=" . $row['petid'] . "'>" . $row['petname'] . "</a></td>"; // Changed 'id' to 'petid'
                                 echo "<td>" . $row['type'] . "</td>";
                                 echo "<td>" . ($row['age'] < 12 ? $row['age'] . " months" : round($row['age'] / 12, 1) . " years") . "</td>";
                                 echo "<td>" . $row['location'] . "</td>";
