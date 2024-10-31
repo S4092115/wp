@@ -237,3 +237,10 @@ footer p {
     object-fit: cover;
     /* Ensures the image covers the area without stretching */
 }
+
+@media (max-width: 991px) {
+    .navbar-nav .nav-item {
+        text-align: center;
+        width: 100%;
+    }
+}

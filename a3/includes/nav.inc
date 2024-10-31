@@ -1,24 +1,27 @@
-<nav>
-    
-    <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="pets.php">Pets</a></li>
-        <li><a href="gallery.php">Gallery</a></li>
-        <li><a href="search.php">Search</a></li>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #108484;">
+        <a class="navbar-brand" href="index.php">
+        </a>
+        </button>
         
-        <!-- Only show 'Add Pet' and 'Profile' if the user is logged in -->
-        <?php if (isset($_SESSION['username'])): ?>
-            <li><a href="add.php">Add Pet</a></li>
-            <!-- Ensure the userID is passed to the profile link -->
-            <li><a href="user.php?userID=<?php echo $_SESSION['userID']; ?>">Profile</a></li>
-        <?php endif; ?>
-
-        <!-- Show Register and Login if the user is not logged in -->
-        <?php if (!isset($_SESSION['username'])): ?>
-            <li><a href="register.php">Register</a></li>
-            <li><a href="login.php">Login</a></li>
-        <?php else: ?>
-            <li><a href="logout.php">Logout</a></li>
-        <?php endif; ?>
-    </ul>
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link text-uppercase" href="index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase" href="pets.php">Pets</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase" href="gallery.php">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase" href="search.php">Search</a></li>
+                
+                <!-- Only show 'Add Pet' and 'Profile' if the user is logged in -->
+                <?php if (isset($_SESSION['username'])): ?>
+                    <li class="nav-item"><a class="nav-link text-uppercase" href="add.php">Add Pet</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase" href="user.php?userID=<?php echo $_SESSION['userID']; ?>">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase" href="logout.php">Logout</a></li>
+                <?php else: ?>
+                    <!-- Show Register and Login if the user is not logged in -->
+                    <li class="nav-item"><a class="nav-link text-uppercase" href="register.php">Register</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase" href="login.php">Login</a></li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </div>
 </nav>
