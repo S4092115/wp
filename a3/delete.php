@@ -47,10 +47,6 @@ if (isset($_GET['petid'])) {
 ?>
 
 <body>
-    <div class="wrapper">
-        <header>
-            <?php include_once "includes/nav.inc"; ?>
-        </header>
         <h2>Delete Pet</h2>
         <p>Are you sure you want to delete this pet?</p>
         <form method="POST" onsubmit="return confirmDeletion();">

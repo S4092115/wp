@@ -36,13 +36,6 @@ if (isset($_GET['petid'])) {  // Changed 'id' to 'petid' for consistency
 ?>
 
 <body>
-    <div class="wrapper">
-        <header>
-            <a href="index.php">
-                <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
-            </a>
-            <?php include_once "includes/nav.inc"; ?>
-        </header>
 
         <div class="main-content">
             <h1><?php echo htmlspecialchars($row['petname']); ?></h1>

@@ -38,10 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <body>
-    <div class="wrapper">
-        <header>
-            <?php include_once "includes/nav.inc"; ?>
-        </header>
         <h2>Login</h2>
         <form method="POST">
             <label>Username:</label>

@@ -47,7 +47,6 @@ if (isset($_GET['userID'])) {
             <a href="index.php">
                 <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
             </a>
-            <?php include_once "includes/nav.inc"; ?>
         </header>
 
         <main class="main-content">

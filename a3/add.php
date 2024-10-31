@@ -63,14 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <body>
-    <div class="wrapper">
-        <header>
-            <a href="index.php">
-                <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
-            </a>
-            <?php include_once "includes/nav.inc"; ?>
-        </header>
-
         <h1>Add a New Pet</h1>
         <form action="add.php" method="POST" enctype="multipart/form-data">
             <label for="pet-name">Provide a name for the pet:</label>

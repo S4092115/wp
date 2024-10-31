@@ -2,14 +2,6 @@
 <?php include_once "includes/db_connect.inc"; ?>
 
 <body>
-    <div class="wrapper">
-        <header>
-            <a href="index.php">
-                <img src="images/logo.png" alt="Pets Victoria Logo" class="logo">
-            </a>
-            <?php include_once "includes/nav.inc"; ?>
-        </header>
-
         <main class="main-content">
             <h1>Search for a Pet</h1>
 

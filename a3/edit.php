@@ -79,10 +79,7 @@ if (isset($_GET['petid'])) {
 ?>
 
 <body>
-    <div class="wrapper">
-        <header>
-            <?php include_once "includes/nav.inc"; ?>
-        </header>
+
         <h2>Edit Pet</h2>
 
         <form action="edit.php?petid=<?php echo $petid; ?>" method="POST" enctype="multipart/form-data">
