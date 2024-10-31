@@ -2,8 +2,8 @@
 <?php include_once "includes/db_connect.inc"; ?>
 
 <?php
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Grab the form data
     $username = $_POST['username'];
     $password = $_POST['password'];
     
@@ -16,28 +16,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ss", $username, $hashed_password);
     
     if ($stmt->execute()) {
-        echo "Registration successful!";
         header("Location: login.php");
+        exit;
     } else {
         echo "Error: " . $conn->error;
     }
-    
     $stmt->close();
 }
 ?>
 
 <body>
-    <div class="wrapper">
-        <header>
-            <?php include_once "includes/nav.inc"; ?>
-        </header>
-        <h2>Register</h2>
-        <form method="POST">
-            <label>Username:</label>
-            <input type="text" name="username" required><br>
-            <label>Password:</label>
-            <input type="password" name="password" required><br>
-            <button type="submit">Register</button>
+        <h2 class="text-center mb-4">Register</h2>
+        
+        <form method="POST" class="mx-auto" style="max-width: 500px;">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Register</button>
         </form>
     </div>
     <?php include_once "includes/footer.inc"; ?>

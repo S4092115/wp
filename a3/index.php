@@ -1,28 +1,7 @@
 <?php include_once "includes/header.inc"; ?>
 <?php include_once "includes/db_connect.inc"; ?>
 
-
 <body>
-    <div class="container-fluid px-0">
-        <header class="text-white py-3">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="index.php">
-                        <img src="images/logo.png" alt="Pets Victoria Logo" class="logo img-fluid" style="height: 50px;">
-                    </a>
-                    <!-- Toggler for small screens -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <!-- Collapsible content -->
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <?php include_once "includes/nav.inc"; ?>
-                    </div>
-                </nav>
-            </div>
-        </header>
-
         <main class="container py-4">
             <div class="text-center">
                 <h1 class="display-4">PETS VICTORIA</h1>

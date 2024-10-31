@@ -1,5 +1,5 @@
 body {
-    font-family: 'Permanent Marker SC', Arial, sans-serif !important;
+    font-family: 'Ysabeau SC', Arial, sans-serif !important;
     margin: 0;
     padding: 0;
     background-color: #fcf9ec;
@@ -229,4 +229,11 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+.carousel-inner img {
+    height: 500px;
+    width: 500px;
+    object-fit: cover;
+    /* Ensures the image covers the area without stretching */
 }
