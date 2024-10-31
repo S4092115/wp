@@ -25,8 +25,8 @@ if (isset($_GET['petid'])) {
         $age = $_POST['age'];
         $location = $_POST['location'];
         $description = $_POST['description'];
-        $imageCaption = $_POST['caption'];  // New field for the image caption
-        $newImageName = $pet['image']; // Set default to the existing image name
+        $imageCaption = $_POST['caption'];
+        $newImageName = $pet['image'];
 
         // Handle new image upload
         if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
@@ -39,14 +39,12 @@ if (isset($_GET['petid'])) {
             $allowed = array("jpg", "jpeg", "png");
 
             if (in_array($imageExt, $allowed)) {
-                if ($imageSize < 500000) { // Ensure image size is less than 500KB
-                    // Generate a unique name for the new image
+                if ($imageSize < 500000) {
                     $newImageName = uniqid("", true) . "." . $imageExt;
                     $imageDestination = "images/" . $newImageName;
 
-                    // Move the uploaded image to the 'images' directory
+                    // Move the uploaded image and delete the old one if applicable
                     if (move_uploaded_file($imageTmpName, $imageDestination)) {
-                        // Delete the old image file if a new one is uploaded
                         $oldImagePath = "images/" . $pet['image'];
                         if (file_exists($oldImagePath) && $oldImagePath != "images/default.jpg") {
                             unlink($oldImagePath);
@@ -79,44 +77,61 @@ if (isset($_GET['petid'])) {
 ?>
 
 <body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Edit Pet</h2>
 
-        <h2>Edit Pet</h2>
+        <form action="edit.php?petid=<?php echo $petid; ?>" method="POST" enctype="multipart/form-data" class="mx-auto" style="max-width: 600px;">
+            <div class="mb-3">
+                <label for="pet-name" class="form-label">Pet Name:</label>
+                <input type="text" id="pet-name" name="petname" class="form-control" value="<?php echo htmlspecialchars($pet['petname']); ?>" required>
+            </div>
 
-        <form action="edit.php?petid=<?php echo $petid; ?>" method="POST" enctype="multipart/form-data">
-            <label for="pet-name">Pet Name:</label>
-            <input type="text" id="pet-name" name="petname" value="<?php echo htmlspecialchars($pet['petname']); ?>" required>
+            <div class="mb-3">
+                <label for="pet-type" class="form-label">Type:</label>
+                <select id="pet-type" name="pettype" class="form-select" required>
+                    <option value="" disabled>--Choose an option--</option>
+                    <option value="Dog" <?php if ($pet['type'] == 'Dog') echo 'selected'; ?>>Dog</option>
+                    <option value="Cat" <?php if ($pet['type'] == 'Cat') echo 'selected'; ?>>Cat</option>
+                    <option value="Bird" <?php if ($pet['type'] == 'Bird') echo 'selected'; ?>>Bird</option>
+                    <option value="Other" <?php if ($pet['type'] == 'Other') echo 'selected'; ?>>Other</option>
+                </select>
+            </div>
 
-            <label for="pet-type">Type:</label>
-            <select id="pet-type" name="pettype" required>
-                <option value="" disabled>--Choose an option--</option>
-                <option value="Dog" <?php if ($pet['type'] == 'Dog') echo 'selected'; ?>>Dog</option>
-                <option value="Cat" <?php if ($pet['type'] == 'Cat') echo 'selected'; ?>>Cat</option>
-                <option value="Bird" <?php if ($pet['type'] == 'Bird') echo 'selected'; ?>>Bird</option>
-                <option value="Other" <?php if ($pet['type'] == 'Other') echo 'selected'; ?>>Other</option>
-            </select>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" name="description" class="form-control" required><?php echo htmlspecialchars($pet['description']); ?></textarea>
+            </div>
 
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required><?php echo htmlspecialchars($pet['description']); ?></textarea>
+            <div class="mb-3">
+                <label for="caption" class="form-label">Image Caption:</label>
+                <input type="text" id="caption" name="caption" class="form-control" value="<?php echo htmlspecialchars($pet['caption']); ?>" required>
+            </div>
 
-            <label for="caption">Image Caption:</label> <!-- New input for the image caption -->
-            <input type="text" id="caption" name="caption" value="<?php echo htmlspecialchars($pet['caption']); ?>" required>
+            <div class="mb-3">
+                <label for="pet-age" class="form-label">Age (months):</label>
+                <input type="number" id="pet-age" name="age" class="form-control" value="<?php echo htmlspecialchars($pet['age']); ?>" required>
+            </div>
 
-            <label for="pet-age">Age (months):</label>
-            <input type="number" id="pet-age" name="age" value="<?php echo htmlspecialchars($pet['age']); ?>" required>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location:</label>
+                <input type="text" id="location" name="location" class="form-control" value="<?php echo htmlspecialchars($pet['location']); ?>" required>
+            </div>
 
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($pet['location']); ?>" required>
+            <div class="mb-3">
+                <label for="image" class="form-label">Current Image:</label>
+                <div>
+                    <img src="images/<?php echo htmlspecialchars($pet['image']); ?>" alt="Current Pet Image" class="img-fluid mb-3" style="max-width: 200px;">
+                </div>
+                <label for="image" class="form-label">Replace Image (optional):</label>
+                <input type="file" name="image" class="form-control">
+                <small class="form-text text-muted">Max size: 500KB. Allowed types: JPG, JPEG, PNG.</small>
+            </div>
 
-            <label for="image">Current Image:</label>
-            <img src="images/<?php echo $pet['image']; ?>" alt="Current Pet Image" style="max-width: 200px; display: block;">
-
-            <label for="image">Replace Image (optional):</label>
-            <input type="file" name="image">
-
-            <input type="submit" value="Update Pet">
-            <button type="reset">Clear</button>
+            <button type="submit" class="btn btn-primary w-100">Update Pet</button>
+            <button type="reset" class="btn btn-secondary w-100 mt-2">Clear</button>
         </form>
     </div>
+    
     <?php include_once "includes/footer.inc"; ?>
 </body>
 </html>

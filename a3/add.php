@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $petAge = $_POST["petAge"];
     $location = $_POST["location"];
     $image = $_FILES["image"];
-    $username = $_SESSION['username']; // Get the logged-in user's username
+    $username = $_SESSION['username'];
 
     $imageName = $image["name"];
     $imageTmpName = $image["tmp_name"];
@@ -35,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $imageDestination = "images/" . $imageNewName;
                 move_uploaded_file($imageTmpName, $imageDestination);
 
-                // Inserts the pet details along with the username
                 $sql = "INSERT INTO pets (petname, type, description, caption, age, location, image, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
 
@@ -63,37 +62,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <body>
-        <h1>Add a New Pet</h1>
-        <form action="add.php" method="POST" enctype="multipart/form-data">
-            <label for="pet-name">Provide a name for the pet:</label>
-            <input type="text" id="pet-name" name="petName" required>
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Add a New Pet</h1>
+        <form action="add.php" method="POST" enctype="multipart/form-data" class="row g-3">
+            
+            <div class="col-md-6">
+                <label for="pet-name" class="form-label">Provide a name for the pet:</label>
+                <input type="text" id="pet-name" name="petName" class="form-control" required>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="pet-type" class="form-label">Type:</label>
+                <select id="pet-type" name="petType" class="form-select" required>
+                    <option value="" disabled selected>--Choose an option--</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div class="col-12">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+            </div>
+            
+            <div class="col-12">
+                <label for="image" class="form-label">Select an Image: <span style="color: red;">MAX IMAGE SIZE: 500KB</span></label>
+                <input type="file" id="image" name="image" class="form-control" required>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="image-caption" class="form-label">Image Caption:</label>
+                <input type="text" id="image-caption" name="imageCaption" class="form-control" required>
+            </div>
+            
+            <div class="col-md-3">
+                <label for="pet-age" class="form-label">Age (months):</label>
+                <input type="number" id="pet-age" name="petAge" class="form-control" required>
+            </div>
+            
+            <div class="col-md-3">
+                <label for="location" class="form-label">Location:</label>
+                <input type="text" id="location" name="location" class="form-control" required>
+            </div>
 
-            <label for="pet-type">Type:</label>
-            <select id="pet-type" name="petType" required>
-                <option value="" disabled selected>--Choose an option--</option>
-                <option value="Dog">Dog</option>
-                <option value="Cat">Cat</option>
-                <option value="Bird">Bird</option>
-                <option value="Other">Other</option>
-            </select>
-
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea>
-
-            <label for="image">Select an Image: <span style="color: red;">MAX IMAGE SIZE: 500KB</span></label>
-            <input type="file" id="image" name="image" required>
-
-            <label for="image-caption">Image Caption:</label>
-            <input type="text" id="image-caption" name="imageCaption" required>
-
-            <label for="pet-age">Age (months):</label>
-            <input type="number" id="pet-age" name="petAge" required>
-
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required>
-
-            <input type="submit" value="Submit">
-            <button type="reset">Clear</button>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-success px-4">Submit</button>
+                <button type="reset" class="btn btn-secondary px-4">Clear</button>
+            </div>
         </form>
 
         <?php include_once "includes/footer.inc"; ?>

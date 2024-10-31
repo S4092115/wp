@@ -20,7 +20,7 @@ if (isset($_GET['petid'])) {
     $pet = $result->fetch_assoc();
 
     if (!$pet) {
-        echo "Pet not found.";
+        echo "<div class='alert alert-danger'>Pet not found.</div>";
         exit();
     }
 
@@ -40,20 +40,24 @@ if (isset($_GET['petid'])) {
             header("Location: gallery.php");
             exit();
         } else {
-            echo "Error: " . $conn->error;
+            echo "<div class='alert alert-danger'>Error: " . $conn->error . "</div>";
         }
     }
 }
 ?>
 
 <body>
-        <h2>Delete Pet</h2>
-        <p>Are you sure you want to delete this pet?</p>
-        <form method="POST" onsubmit="return confirmDeletion();">
-            <button type="submit">Yes, Delete</button>
-            <a href="details.php?petid=<?php echo $petid; ?>">Cancel</a>
-        </form>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Delete Pet</h2>
+        <p class="text-center">Are you sure you want to delete this pet?</p>
+        <div class="d-flex justify-content-center">
+            <form method="POST" onsubmit="return confirmDeletion();" class="text-center">
+                <button type="submit" class="btn btn-danger me-3">Yes, Delete</button>
+                <a href="details.php?petid=<?php echo $petid; ?>" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
     </div>
+    
     <?php include_once "includes/footer.inc"; ?>
 
     <script>

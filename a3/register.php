@@ -1,7 +1,6 @@
-<?php include_once "includes/header.inc"; ?>
-<?php include_once "includes/db_connect.inc"; ?>
-
-<?php
+<?php 
+include_once "includes/header.inc"; 
+include_once "includes/db_connect.inc"; 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -16,6 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ss", $username, $hashed_password);
     
     if ($stmt->execute()) {
+        // Set a success message in the session
+        $_SESSION['success_message'] = "Account created successfully, please log in.";
         header("Location: login.php");
         exit;
     } else {
@@ -26,20 +27,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <body>
-        <h2 class="text-center mb-4">Register</h2>
-        
-        <form method="POST" class="mx-auto" style="max-width: 500px;">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username:</label>
-                <input type="text" id="username" name="username" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password:</label>
-                <input type="password" id="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Register</button>
-        </form>
-    </div>
+    <h2 class="text-center mb-4">Register</h2>
+    
+    <form method="POST" class="mx-auto" style="max-width: 500px;">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" id="username" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Register</button>
+    </form>
     <?php include_once "includes/footer.inc"; ?>
 </body>
 </html>

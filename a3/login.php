@@ -2,9 +2,15 @@
 <?php include_once "includes/db_connect.inc"; ?>
 
 <?php
-// Check if session has started before starting it again
+// Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
+
+// Display success message if account was created
+if (isset($_SESSION['success_message'])) {
+    echo '<div class="alert alert-success text-center">' . $_SESSION['success_message'] . '</div>';
+    unset($_SESSION['success_message']); // Clear message after displaying it
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -30,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: user.php?userID=" . $user['userID']);
         exit(); // Ensure the script stops after redirection
     } else {
-        echo "<p style='color: red;'>Invalid login details. Please try again.</p>";
+        echo "<div class='alert alert-danger text-center'>Invalid login details. Please try again.</div>";
     }
     
     $stmt->close();
@@ -38,15 +44,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <body>
-        <h2>Login</h2>
-        <form method="POST">
-            <label>Username:</label>
-            <input type="text" name="username" required><br>
-            <label>Password:</label>
-            <input type="password" name="password" required><br>
-            <button type="submit">Login</button>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Login</h2>
+        
+        <form method="POST" class="mx-auto" style="max-width: 400px;">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
     </div>
+    
     <?php include_once "includes/footer.inc"; ?>
 </body>
 </html>
