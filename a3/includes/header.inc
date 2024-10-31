@@ -7,25 +7,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <!DOCTYPE html>
 <html lang="en">
-            <header class="text-white py-3"">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="index.php">
-                        <img src="images/logo.png" alt="Pets Victoria Logo" class="logo img-fluid" style="height: 50px;">
-                    </a>
-                    <!-- Toggler for small screens -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <!-- Collapsible content -->
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <?php include_once "includes/nav.inc"; ?>
-                    </div>
-                </nav>
-            </div>
-        </header>
-
 <head>
     
     <meta charset="UTF-8">
@@ -44,4 +25,22 @@ if (session_status() == PHP_SESSION_NONE) {
 <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
 </head>
+            <header class="text-white py-3"">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <a class="navbar-brand" href="index.php">
+                        <img src="images/logo.png" alt="Pets Victoria Logo" class="logo img-fluid" style="height: 50px;">
+                    </a>
+                    <!-- Toggler for small screens -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- Collapsible content -->
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <?php include_once "includes/nav.inc"; ?>
+                    </div>
+                </nav>
+            </div>
+        </header>
 
