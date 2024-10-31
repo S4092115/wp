@@ -1,20 +1,13 @@
 body {
-    font-family: 'Ysabeau SC', Arial, sans-serif;
+    font-family: 'Permanent Marker SC', Arial, sans-serif !important;
     margin: 0;
     padding: 0;
     background-color: #fcf9ec;
 }
 
-/* Wrapper now has a fixed width of 1200px and is centered */
-.wrapper {
-    width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 /* Header Styling */
 header {
-    background-color: #108484;
+    background-color: #108484 !important;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -40,7 +33,6 @@ nav ul {
     padding: 0;
     display: flex;
     gap: 20px;
-    /* Adds space between nav items */
     align-items: center;
 }
 
@@ -64,17 +56,6 @@ nav ul li a:hover {
     transition: background-color 0.3s ease;
 }
 
-/* Search bar and search icon styling */
-header input[type="search"] {
-    padding: 5px;
-    flex: 0 1 auto;
-}
-
-header img.search-icon {
-    height: 20px;
-    flex: 0 0 auto;
-}
-
 /* Main Content Styling */
 .main-content {
     text-align: center;
@@ -86,13 +67,13 @@ header img.search-icon {
 }
 
 .main-content h1 {
-    font-family: 'Permanent Marker', sans-serif;
+    font-family: 'Permanent Marker', sans-serif !important;
     font-size: 40px;
     color: #108484;
 }
 
 .main-content p {
-    font-family: 'Ysabeau SC', Arial, sans-serif;
+    font-family: 'Poetsen One', Arial, sans-serif !important;
     font-size: 18px;
     color: #108484;
 }
@@ -128,7 +109,7 @@ header img.search-icon {
 }
 
 .pet-card h2 {
-    font-family: 'Poetsen One', Arial, sans-serif;
+    font-family: 'Poetsen One', Arial, sans-serif !important;
     margin: 10px 0 0 0;
     font-size: 18px;
 }
@@ -153,7 +134,7 @@ header img.search-icon {
 .pets-table th {
     background-color: #f2f2f2;
     color: #333;
-    font-family: 'Poetsen One', Arial, sans-serif;
+    font-family: 'Poetsen One', Arial, sans-serif !important;
 }
 
 .pets-table td a {
@@ -240,10 +221,7 @@ button[type="reset"] {
 /* Footer */
 footer {
     background-color: #e87c3c;
-    width: 1200px;
-    /* Fixed width for the footer */
     margin: 0 auto;
-    /* Center the footer */
     padding: 20px;
     text-align: center;
     clear: both;
